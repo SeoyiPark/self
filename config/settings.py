@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)x9%%=s-bba)r@a+j+2dei8u*1%y7l7d76y9!0xgvw_@j=-+vu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -80,8 +80,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydb',          # 실제 MariaDB에 생성한 DB 이름
+        'USER': 'ho0215',              # MariaDB 계정 이름
+        'PASSWORD': 'ho0215', # 본인이 설정한 비밀번호
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
@@ -123,6 +130,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/accounts/login/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
