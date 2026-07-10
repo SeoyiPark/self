@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'anime',
     'accounts',
+    'deal.apps.DealConfig'
 ]
 
 
