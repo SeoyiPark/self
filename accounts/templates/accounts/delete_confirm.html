@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-[calc(100vh-4rem)] px-4 py-12">
+    <div class="max-w-md w-full bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 text-center space-y-6">
+        <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400">
+            <span class="text-3xl">⚠️</span>
+        </div>
+
+        <div class="space-y-2">
+            <h2 class="text-2xl font-black text-gray-900 dark:text-white tracking-tight">정말 탈퇴하시겠습니까?</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                계정을 삭제하시면 모든 창작물 데이터, 프로필, 설정 정보가 즉시 영구 삭제되며 절대 복구할 수 없습니다.
+            </p>
+        </div>
+
+        <form method="POST" action="{% url 'accounts:delete_account' %}" class="flex flex-col sm:flex-row gap-3 pt-2">
+            {% csrf_token %}
+            <a href="{% url 'accounts:profile' %}" class="flex-1 px-5 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 text-center transition">
+                취소하고 돌아가기
+            </a>
+            <button type="submit" class="flex-1 px-5 py-3 text-sm font-medium text-white bg-red-600 rounded-xl hover:bg-red-700 shadow-sm shadow-red-600/20 transition">
+                네, 탈퇴합니다
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
