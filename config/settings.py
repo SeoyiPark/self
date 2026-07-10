@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'anime',
     'accounts',
-    'deal.apps.DealConfig'
+    'deal.apps.DealConfig',
+    'community.apps.CommunityConfig',
 ]
 
 
@@ -125,3 +126,5 @@ LOGOUT_REDIRECT_URL = '/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+LOGIN_URL = '/accounts/login/'

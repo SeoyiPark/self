@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <select name="board_type">
+        <option value="question">질문</option>
+        <option value="free">자유</option>
+        <option value="share">공유</option>
+        {% if user.is_staff %}
+        <option value="notice">공지사항</option>
+        {% endif %}
+    </select>
+    <input type="text" name="title" placeholder="제목">
+    <textarea name="content" placeholder="내용"></textarea>
+    <input type="file" name="image">
+    <button type="submit">등록</button>
+</form>
+{% endblock %}
